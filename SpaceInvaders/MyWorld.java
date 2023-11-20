@@ -17,8 +17,18 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
+        setBackground();
+        addObject(new Player(), 50, 200);
+    }
+    
+    public void setBackground() {
+        //Gets current background
         GreenfootImage background = getBackground();
+        
+        //Sets the current background to black
         background.setColor(Color.BLACK);
+        
+        //Fills the background in using the dimensions of the current world size
         background.fillRect(0,0,getWidth(),getHeight());
     }
 }
