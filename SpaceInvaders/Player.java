@@ -23,7 +23,7 @@ public class Player extends Global_Object
     {
         if (Player_Health <= 0){
             //If the players health is 0 or less the Actor is destroyed.
-            this.Destroy_Object();
+            Greenfoot.setWorld(new Main_Menu());
         }
         
         if (isTouching(Enemy.class)){
@@ -41,11 +41,11 @@ public class Player extends Global_Object
         
         if (Greenfoot.isKeyDown("s")){
             // Sets the location of the Player downwards by increasing the Y value.
-            setLocation(getX(), getY()+5);
+            setLocation(getX(), getY()+Player_Speed);
         }
         if (Greenfoot.isKeyDown("w")){
             // Sets the location of the Player upwards by decreasing the Y value.
-            setLocation(getX(), getY()-5);
+            setLocation(getX(), getY()-Player_Speed);
         }
         // Checks if the Player's shooting cooldown period has expired.
         if(Current_Cooldown > 0) {
