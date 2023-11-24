@@ -12,8 +12,20 @@ public class Player_Bullet extends Actor
      * Act - do whatever the Player_Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+
+    
     public void act()
     {
-        // Add your action code here.
+        // Check if the Bullet is beyond the edge of the World's borders.
+        if(isAtEdge()) {
+            // If true, remove the object from the current world.
+            getWorld().removeObject(this);
+        } else {
+            // Else, move it by 5 pixels.
+            this.setLocation(this.getX()+5, this.getY());
+        }
+        
     }
+    
 }
