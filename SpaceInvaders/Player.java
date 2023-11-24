@@ -14,25 +14,39 @@ public class Player extends Actor
      */
     
     private int Player_Speed = 5;
+    private final int COOLDOWN_PERIOD = 30;
+    private int Current_Cooldown = 0;
     
     public void act()
     {
-        if (Greenfoot.isKeyDown("a")){
-            move(- Player_Speed);
+        if (Greenfoot.isKeyDown("s")){
+            // Sets the location of the Player downwards by increasing the Y value.
+            setLocation(getX(), getY()+5);
         }
-        if (Greenfoot.isKeyDown("d")){
-            move(Player_Speed);
+        if (Greenfoot.isKeyDown("w")){
+            // Sets the location of the Player upwards by decreasing the Y value.
+            setLocation(getX(), getY()-5);
         }
-        if (Greenfoot.isKeyDown("space")){
-            Player_Bullet_Spawn();
+        // Checks if the Player's shooting cooldown period has expired.
+        if(Current_Cooldown > 0) {
+                // If the player's cooldown has not expired, decrement it by 1.
+                Current_Cooldown--;
+                // If the player's cooldown has expired, run the bullet spawn method.
+            }  else if (Greenfoot.isKeyDown("space")){
+                Player_Bullet_Spawn();
+                // Sets the current cooldown to the specified time after running the method.
+                Current_Cooldown = COOLDOWN_PERIOD;
         }
     }
     
     //Spawn player bullet
     public void Player_Bullet_Spawn (){
+        // Gets the current world and stores it in Current_World.
         World Current_World=getWorld();
+        // Initialise and set's the variables for the Player's X and Y dimensions.
         int Player_X_Pos = getX();
         int Player_Y_Pos = getY();
-        Current_World.addObject(new Player_Bullet(), Player_X_Pos, Player_Y_Pos);
+        // Adds a new Bullet object into the current world.
+        Current_World.addObject(new Player_Bullet(), Player_X_Pos + 60, Player_Y_Pos);
     }
 }
