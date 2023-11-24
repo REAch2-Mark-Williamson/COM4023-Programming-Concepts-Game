@@ -1,6 +1,6 @@
 #Greenfoot project file
 class.Enemy.image=rock.png
-class.Play_Button.image=button-green.png
+class.Play_Button.image=PlayButtion.png
 class.Player.image=rocket.png
 class.Player_Bullet.image=beeper.png
 dependency1.from=MyWorld
@@ -27,10 +27,10 @@ dependency7.type=UsesDependency
 dependency8.from=Play_Button
 dependency8.to=MyWorld
 dependency8.type=UsesDependency
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
+editor.fx.0.height=739
+editor.fx.0.width=816
+editor.fx.0.x=275
+editor.fx.0.y=-4
 height=744
 package.numDependencies=8
 package.numTargets=7
