@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player_Bullet extends Actor
+public class Player_Bullet extends Global_Object
 {
     /**
      * Act - do whatever the Player_Bullet wants to do. This method is called whenever

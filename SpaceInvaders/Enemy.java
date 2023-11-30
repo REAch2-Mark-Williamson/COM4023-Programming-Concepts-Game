@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Actor
+public class Enemy extends Global_Object
 {
     public int AstroidSpeed;
     public int X_POS;
@@ -23,7 +23,7 @@ public class Enemy extends Actor
         X_POS = this.getX();
         if(isAtEdge()) {
             // If true, remove the object from the current world.
-            getWorld().removeObject(this);
+            this.Destroy_Object();
         } else {
             // Else, move it by 5 pixels.
             this.setLocation(this.getX() - AstroidSpeed, this.getY());

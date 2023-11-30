@@ -3,10 +3,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * This is the player object which is controlled by the player
  * 
- * @author Mark Williamson
+ * @author 
  * @version 0.1
  */
-public class Player extends Actor
+public class Player extends Global_Object
 {
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -14,18 +14,38 @@ public class Player extends Actor
      */
     
     private int Player_Speed = 5;
+    private int Player_Health = 3;
     private final int COOLDOWN_PERIOD = 30;
     private int Current_Cooldown = 0;
+    private int Damage_Cooldown = 0;
     
     public void act()
     {
+        if (Player_Health <= 0){
+            //If the players health is 0 or less the Actor is destroyed.
+            Greenfoot.setWorld(new Main_Menu());
+        }
+        
+        if (isTouching(Enemy.class)){
+            //Checks if there is no damage cooldown and removes a point of HP
+            if (Damage_Cooldown <= 0){
+                Player_Health--;
+                Damage_Cooldown = COOLDOWN_PERIOD;
+            }
+            
+            if (Damage_Cooldown > 0) {
+                // If the player's cooldown has not expired, decrement it by 1.
+                Damage_Cooldown--;
+            }
+        }
+        
         if (Greenfoot.isKeyDown("s")){
             // Sets the location of the Player downwards by increasing the Y value.
-            setLocation(getX(), getY()+5);
+            setLocation(getX(), getY()+Player_Speed);
         }
         if (Greenfoot.isKeyDown("w")){
             // Sets the location of the Player upwards by decreasing the Y value.
-            setLocation(getX(), getY()-5);
+            setLocation(getX(), getY()-Player_Speed);
         }
         // Checks if the Player's shooting cooldown period has expired.
         if(Current_Cooldown > 0) {
