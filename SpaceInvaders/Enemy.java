@@ -8,14 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Enemy extends Global_Object
 {
-    public int AstroidSpeed;
+    public int EnemySpeed;
     public int X_POS;
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Enemy(int Speed) {
-        AstroidSpeed = Speed;
+        EnemySpeed = Speed;
     }
     
     public void act()
@@ -26,7 +26,7 @@ public class Enemy extends Global_Object
             this.Destroy_Object();
         } else {
             // Else, move it by 5 pixels.
-            this.setLocation(this.getX() - AstroidSpeed, this.getY());
+            this.setLocation(this.getX() - EnemySpeed, this.getY());
         }
     }
 }

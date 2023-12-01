@@ -14,21 +14,24 @@ public class MyWorld extends World
      * 
      */
     
-    private int speedOfEnemy = 2;
+    private int speedOfAsteroid = 2;
+    private int speedOfShip = 2;
     
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super(1920, 1200, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
         setBackground();
         addObject(new Player(), 50, 200);
-        addObject(new Enemy(speedOfEnemy), 500, 300);
+        addObject(new Asteroid(speedOfAsteroid), 500, 300);
     }
     
     public void act() {
-        if(getObjects(Enemy.class).isEmpty()) {
-            int x = Greenfoot.getRandomNumber(400);
-            addObject(new Enemy(speedOfEnemy), 550, x);
+        if(getObjects(EnemyShip.class).isEmpty() && getObjects(Asteroid.class).isEmpty()) {
+            int spawnHeight = Greenfoot.getRandomNumber(getHeight());
+            int shipHeight = Greenfoot.getRandomNumber(getHeight());
+            addObject(new Asteroid(speedOfAsteroid), getWidth()-50, spawnHeight); //added the getHeight and getWidth to make it auto adjust to size
+            addObject(new EnemyShip(speedOfShip), getWidth()-50, shipHeight);
         }
     }
     
