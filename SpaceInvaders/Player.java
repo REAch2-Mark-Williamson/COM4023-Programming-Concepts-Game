@@ -1,3 +1,5 @@
+import javax.management.loading.PrivateClassLoader;
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -13,12 +15,17 @@ public class Player extends Global_Object
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
+    public int Player_Health = 3;
     private int Player_Speed = 5;
-    private int Player_Health = 3;
     private final int COOLDOWN_PERIOD = 30;
     private int Current_Cooldown = 0;
     private int Damage_Cooldown = 0;
+    private HP_Display Player_HP_Display;
     
+    public Player(HP_Display hp_display) {
+        Player_HP_Display = hp_display;
+    }
+
     public void act()
     {
         if (Player_Health <= 0){
@@ -30,6 +37,8 @@ public class Player extends Global_Object
             //Checks if there is no damage cooldown and removes a point of HP
             if (Damage_Cooldown <= 0){
                 Player_Health--;
+                String Player_HP_Text = Integer.toString(Player_Health);
+                Player_HP_Display.Set_Text(Player_HP_Text);
                 Damage_Cooldown = COOLDOWN_PERIOD;
             }
             
