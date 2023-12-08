@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.awt.Color;
 /**
  * Write a description of class Player_Bullet here.
  * 
@@ -28,11 +28,18 @@ public class Player_Bullet extends Global_Object
     }
     
     public void detectHit() {
-        Actor enemy = getOneIntersectingObject(Enemy.class);
+        Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
         
         if (enemy != null) {
+            int health = enemy.GetHealth();
+            if (health > 0){
+                enemy.Damage();
+                getWorld().removeObject(this);
+            }
+            else {
             getWorld().removeObject(enemy);
             getWorld().removeObject(this);
+            }
         }
     }
     

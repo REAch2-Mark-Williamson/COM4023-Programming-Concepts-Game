@@ -8,14 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class EnemyShip extends Enemy
 {
-    public int ShipSpeed;
-    public int X_POS;
+    public int shipSpeed;
+    public int shipHealth = 4;
+
     /**
      * Act - do whatever the CopyOfEnemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public EnemyShip(int Speed) {
-        super(Speed);
+    public EnemyShip(int Speed, int Health) {
+        super(Speed, Health);
     }
-    
+
+    public int GetHealth(){
+        return super.GetHealth();
+    }
+
+    public void Damage(){
+        super.Damage();
+    }
+   
 }
