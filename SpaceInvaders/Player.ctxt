@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Player
-comment0.text=\n\ This\ is\ the\ player\ object\ which\ is\ controlled\ by\ the\ player\n\ \n\ @author\ \n\ @version\ 0.1\n
-comment1.params=
-comment1.target=void\ act()
+comment0.text=\r\n\ This\ is\ the\ player\ object\ which\ is\ controlled\ by\ the\ player\r\n\ \r\n\ @author\ \r\n\ @version\ 0.1\r\n
+comment1.params=hp_display
+comment1.target=Player(HP_Display)
 comment2.params=
-comment2.target=void\ Player_Bullet_Spawn()
-numComments=3
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ Player_Bullet_Spawn()
+numComments=4
