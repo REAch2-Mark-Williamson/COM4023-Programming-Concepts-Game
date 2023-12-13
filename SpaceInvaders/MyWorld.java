@@ -20,7 +20,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1920, 1200, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
+        super(600, 400, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
         setBackground();
         addObject(new Player(), 50, 200);
         addObject(new Asteroid(speedOfAsteroid,1), 1500, 300);
