@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EnemyShip extends Enemy
 {
     public int shipSpeed;
-    public int shipHealth = 4;
 
     /**
      * Act - do whatever the CopyOfEnemy wants to do. This method is called whenever
