@@ -9,14 +9,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Enemy extends Global_Object
 {
     public int EnemySpeed;
+    public int EnemyHealth;
     public int X_POS;
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Enemy(int Speed) {
+    public Enemy(int Speed, int Health) {
         EnemySpeed = Speed;
+        EnemyHealth = Health;
     }
+
+    public int GetHealth(){
+        return EnemyHealth;
+    }
+
+    public void Damage(){
+        EnemyHealth--;
+    }
+
     
     public void act()
     {
