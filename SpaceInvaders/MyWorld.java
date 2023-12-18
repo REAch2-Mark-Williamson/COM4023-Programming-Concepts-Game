@@ -17,7 +17,7 @@ public class MyWorld extends World
     private int speedOfShip = 2;
     private long initTime = System.currentTimeMillis();
     private Counter score = new Counter();
-    private int enemyCount = 2;
+    private int enemyCount = 3;
     
     public MyWorld()
     {    
@@ -35,12 +35,12 @@ public class MyWorld extends World
     
     public void act() {
         long currentTime = System.currentTimeMillis();
-        if (currentTime >= initTime + 1000){
-            enemySpawner("asteroid", 6);
+        if (currentTime >= initTime + 500 + (Greenfoot.getRandomNumber(25)*100)){
+            enemySpawner("asteroid");
             initTime = currentTime;
         }
         if(getObjects(EnemyShip.class).size()<enemyCount) {       
-            enemySpawner("enemyship", 0);
+            enemySpawner("enemyship");
             }
         }
     
@@ -56,18 +56,14 @@ public class MyWorld extends World
         background.fillRect(0,0,getWidth(),getHeight());
     }
     
-    public void enemySpawner(String object, int maxRand) {
+    public void enemySpawner(String object) {
         int width = getWidth()-50;
             if (object.contains("asteroid")){
-                int rand = Greenfoot.getRandomNumber(maxRand);
-                while (rand >0) {
-                    int Height = 50+Greenfoot.getRandomNumber(getHeight()-50);
+                    int Height = Greenfoot.getRandomNumber(getHeight()-25);
                     addObject(new Asteroid(speedOfAsteroid, 1), width, Height);
-                    rand--;
-                }
             } //added the getHeight and getWidth to make it auto adjust to size
             else if (object.contains("enemyship")){
-                int Height = 50+Greenfoot.getRandomNumber(getHeight()-50);
+                int Height = Greenfoot.getRandomNumber(getHeight())-65;
                 addObject(new EnemyShip(speedOfShip, 3), width, Height);
             }
 
