@@ -15,7 +15,7 @@ public class Asteroid extends Enemy
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Asteroid(int Speed, int Health) {
-        super(Speed, Health);
+        super(Speed+Greenfoot.getRandomNumber(5), Health);
     }
 
     public int GetHealth(){

@@ -14,7 +14,7 @@ public class EnemyShip extends Enemy
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public EnemyShip(int Speed, int Health) {
-        super(Speed, Health);
+        super(Speed+Greenfoot.getRandomNumber(3), Health);
     }
 
     public int GetHealth(){
