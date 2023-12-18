@@ -20,7 +20,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
+        super(1000, 600, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
         setBackground();
         HP_Display hp_display = new HP_Display("3");
         addObject(hp_display, 10, 50);
@@ -34,10 +34,16 @@ public class MyWorld extends World
     public void act() {
 
         if(getObjects(EnemyShip.class).isEmpty() && getObjects(Asteroid.class).isEmpty()) {
-            int asteroidHeight = Greenfoot.getRandomNumber(getHeight());
-            int shipHeight = Greenfoot.getRandomNumber(getHeight());
-            addObject(new Asteroid(speedOfAsteroid, 1), getWidth()-50, asteroidHeight); //added the getHeight and getWidth to make it auto adjust to size
-            addObject(new EnemyShip(speedOfShip, 3), getWidth()-50, shipHeight);
+            int rand = Greenfoot.getRandomNumber(5);
+            while (rand >0) {
+                int asteroidHeight = Greenfoot.getRandomNumber(getHeight());
+                int shipHeight = Greenfoot.getRandomNumber(getHeight());
+                addObject(new Asteroid(speedOfAsteroid, 1), getWidth()-50, asteroidHeight); //added the getHeight and getWidth to make it auto adjust to size
+                addObject(new EnemyShip(speedOfShip, 3), getWidth()-50, shipHeight);
+                rand--;
+
+            }
+
         }
 
     }
