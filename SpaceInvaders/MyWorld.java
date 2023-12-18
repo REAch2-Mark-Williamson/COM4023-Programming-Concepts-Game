@@ -38,8 +38,9 @@ public class MyWorld extends World
             while (rand >0) {
                 int asteroidHeight = Greenfoot.getRandomNumber(getHeight());
                 int shipHeight = Greenfoot.getRandomNumber(getHeight());
-                addObject(new Asteroid(speedOfAsteroid, 1), getWidth()-50, asteroidHeight); //added the getHeight and getWidth to make it auto adjust to size
-                addObject(new EnemyShip(speedOfShip, 3), getWidth()-50, shipHeight);
+                int widthRand = getWidth()-(Greenfoot.getRandomNumber(5)*50);
+                addObject(new Asteroid(speedOfAsteroid, 1), widthRand, asteroidHeight); //added the getHeight and getWidth to make it auto adjust to size
+                addObject(new EnemyShip(speedOfShip, 3), widthRand, shipHeight);
                 rand--;
 
             }
