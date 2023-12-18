@@ -32,11 +32,13 @@ public class Player_Bullet extends Global_Object
             enemy.Damage();
             int health = enemy.GetHealth();
             String s = String.valueOf(health);
-            //System.out.println(s);
             if (health >= 1){
                 getWorld().removeObject(this);
             }
             else if (health < 1){
+                if (enemy instanceof EnemyShip){
+                    ((MyWorld)getWorld()).getCounter().addCount();
+                }
                 getWorld().removeObject(enemy);
                 getWorld().removeObject(this);
             }

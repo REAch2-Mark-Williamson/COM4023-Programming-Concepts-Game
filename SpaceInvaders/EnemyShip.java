@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EnemyShip extends Enemy
 {
     public int shipSpeed;
-
     /**
      * Act - do whatever the CopyOfEnemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,6 +23,5 @@ public class EnemyShip extends Enemy
 
     public void Damage(){
         super.Damage();
-    }
-   
+    }  
 }
