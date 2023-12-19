@@ -37,7 +37,9 @@ public class Player_Bullet extends Global_Object
             }
             else if (health < 1){
                 if (enemy instanceof EnemyShip){
-                    ((MyWorld)getWorld()).getCounter().addCount();
+                    HP_Display Player_HP_Display = ((MyWorld)getWorld()).getScore();
+                    String Player_HP_Text = "7";
+                    Player_HP_Display.addScore();
                 }
                 getWorld().removeObject(enemy);
                 getWorld().removeObject(this);

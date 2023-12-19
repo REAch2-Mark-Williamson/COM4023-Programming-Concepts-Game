@@ -16,7 +16,8 @@ public class MyWorld extends World
     private int speedOfAsteroid = 2;
     private int speedOfShip = 2;
     private long initTime = System.currentTimeMillis();
-    private Counter score = new Counter();
+    private HP_Display score = new HP_Display("Score  = ",0);
+    private HP_Display hp_display = new HP_Display("3");
     private int enemyCount = 3;
     
     public MyWorld()
@@ -24,13 +25,10 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
         setBackground();
-        HP_Display hp_display = new HP_Display("3");
         addObject(hp_display, 10, 50);
         addObject(new Player(hp_display), 50, 200);
         addObject(new Asteroid(5,1), getWidth()-50, Greenfoot.getRandomNumber(getHeight()));
         addObject(score, getWidth()-100, 25);
-        getCounter();
-
     }
     
     public void act() {
@@ -72,8 +70,13 @@ public class MyWorld extends World
         }
     
 
-    public Counter getCounter()
+    public HP_Display getScore()
     {
         return score;
+    }
+
+    public HP_Display getHP()
+    {
+        return hp_display;
     }
 }

@@ -13,7 +13,7 @@ public class Death_Screen extends World
      * Constructor for objects of class Death_Screen.
      * 
      */
-    public Death_Screen(Counter counter)
+    public Death_Screen(HP_Display counter)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
