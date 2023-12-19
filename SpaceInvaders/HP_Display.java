@@ -44,4 +44,11 @@ public class HP_Display extends Global_Object
         String Input_Score = Integer.toString(Player_Score);
         updateDisplay(Output_Beginning, Input_Score);
     }
+
+        
+    public void minusScore() {
+        Player_Score -- ;
+        String Input_Score = Integer.toString(Player_Score);
+        updateDisplay(Output_Beginning, Input_Score);
+    }
 }

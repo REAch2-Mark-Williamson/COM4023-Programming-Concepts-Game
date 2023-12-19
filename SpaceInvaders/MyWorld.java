@@ -15,7 +15,9 @@ public class MyWorld extends World
      */
     private int speedOfAsteroid = 2;
     private int speedOfShip = 2;
+    private int speedOfSat = 4;
     private long initTime = System.currentTimeMillis();
+    private long satTime = System.currentTimeMillis();
     private HP_Display score = new HP_Display("Score  = ",0);
     private HP_Display hp_display = new HP_Display("3");
     private int enemyCount = 3;
@@ -39,6 +41,10 @@ public class MyWorld extends World
         }
         if(getObjects(EnemyShip.class).size()<enemyCount) {       
             enemySpawner("enemyship");
+        }
+        if (currentTime >= satTime + 5000 + (Greenfoot.getRandomNumber(5)*1000)){
+            enemySpawner("satellite");
+            satTime = currentTime;
             }
         }
     
@@ -56,25 +62,28 @@ public class MyWorld extends World
     
     public void enemySpawner(String object) {
         int width = getWidth()-50;
-            if (object.contains("asteroid")){
-                    int Height = Greenfoot.getRandomNumber(getHeight()-25);
-                    addObject(new Asteroid(speedOfAsteroid, 1), width, Height);
-            } //added the getHeight and getWidth to make it auto adjust to size
-            else if (object.contains("enemyship")){
-                int Height = Greenfoot.getRandomNumber(getHeight())-65;
-                addObject(new EnemyShip(speedOfShip, 3), width, Height);
-            }
-
-            
-
+        switch(object){
+            case "asteroid":
+                int Height = Greenfoot.getRandomNumber(getHeight()-25);
+                addObject(new Asteroid(speedOfAsteroid, 1), width, Height);
+                break;
+            case "enemyship":
+                int shipHeight = Greenfoot.getRandomNumber(getHeight())-65;
+                addObject(new EnemyShip(speedOfShip, 3), width, shipHeight);
+                break;
+            case "satellite":
+                int satHeight = Greenfoot.getRandomNumber(getHeight())-65;
+                addObject(new Satellite(speedOfSat, 3), width, satHeight);
+                break;            
         }
+    }
     
 
     public HP_Display getScore()
     {
         return score;
     }
-
+    
     public HP_Display getHP()
     {
         return hp_display;

@@ -31,15 +31,16 @@ public class Player_Bullet extends Global_Object
         if (enemy != null) {
             enemy.Damage();
             int health = enemy.GetHealth();
-            String s = String.valueOf(health);
             if (health >= 1){
                 getWorld().removeObject(this);
             }
             else if (health < 1){
                 if (enemy instanceof EnemyShip){
                     HP_Display Player_HP_Display = ((MyWorld)getWorld()).getScore();
-                    String Player_HP_Text = "7";
                     Player_HP_Display.addScore();
+                }else if (enemy instanceof Satellite){
+                    HP_Display Player_HP_Display = ((MyWorld)getWorld()).getScore();
+                    Player_HP_Display.minusScore();
                 }
                 getWorld().removeObject(enemy);
                 getWorld().removeObject(this);
