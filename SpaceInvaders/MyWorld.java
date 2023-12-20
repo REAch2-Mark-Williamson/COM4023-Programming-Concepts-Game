@@ -14,6 +14,7 @@ public class MyWorld extends World
      * 
      */
     private int speedOfAsteroid = 2;
+    private int healthOfShip = 3;
     private int speedOfShip = 2;
     private int speedOfSat = 4;
     private long initTime = System.currentTimeMillis();
@@ -21,6 +22,9 @@ public class MyWorld extends World
     private HP_Display score = new HP_Display("Score  = ",0);
     private HP_Display hp_display = new HP_Display("3");
     private int enemyCount = 3;
+    private boolean scoreTen;
+    private boolean scoreFifteen;
+    final private int WIDTH = getWidth()-50;
     
     public MyWorld()
     {    
@@ -61,19 +65,34 @@ public class MyWorld extends World
     }
     
     public void enemySpawner(String object) {
-        int width = getWidth()-50;
+
+
         switch(object){
+            
             case "asteroid":
                 int Height = Greenfoot.getRandomNumber(getHeight()-25);
-                addObject(new Asteroid(speedOfAsteroid, 1), width, Height);
+                addObject(new Asteroid(speedOfAsteroid, 1), WIDTH, Height);
                 break;
+
             case "enemyship":
                 int shipHeight = Greenfoot.getRandomNumber(getHeight())-65;
-                addObject(new EnemyShip(speedOfShip, 3), width, shipHeight);
+                int score = getScore().intValue();
+
+                if(score > 9 && score < 15 && !scoreTen){
+                    speedOfShip = speedOfShip + 2;
+                    scoreTen = true;
+                }else if (score > 14 && score < 20 && !scoreFifteen){
+                    speedOfShip = speedOfShip + 2;
+                    healthOfShip = healthOfShip +1;
+                    scoreFifteen = true;
+                }
+
+                addObject(new EnemyShip(speedOfShip, healthOfShip), WIDTH, shipHeight);
                 break;
+                
             case "satellite":
                 int satHeight = Greenfoot.getRandomNumber(getHeight())-65;
-                addObject(new Satellite(speedOfSat, 3), width, satHeight);
+                addObject(new Satellite(speedOfSat, 3), WIDTH, satHeight);
                 break;            
         }
     }
