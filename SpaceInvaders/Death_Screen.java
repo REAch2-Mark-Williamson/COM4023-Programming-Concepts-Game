@@ -17,13 +17,13 @@ public class Death_Screen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        setBackground();
+        Set_Background();
         addObject(new Main_Menu_Button(), 150, 250); 
         addObject(new New_Game_Button(), 440, 250); 
         addObject(counter, getWidth()-(getWidth()/2), getHeight()-50);
         addObject(new Wasted(), getWidth()-(getWidth()/2), 100);
     }
-    public void setBackground() {
+    public void Set_Background() {
         //Gets current background
         GreenfootImage background = getBackground();
         

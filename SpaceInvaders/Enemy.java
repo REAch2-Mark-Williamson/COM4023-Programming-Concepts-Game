@@ -19,7 +19,7 @@ public class Enemy extends Global_Object
         Enemy_Health = Health;
     }
 
-    public int GetHealth(){
+    public int Get_Health(){
         return Enemy_Health;
     }
 
