@@ -35,12 +35,12 @@ public class Player_Bullet extends Global_Object
                 getWorld().removeObject(this);
             }
             else if (health < 1){
-                if (enemy instanceof EnemyShip){
+                if (enemy instanceof Enemy_Ship){
                     HP_Display Player_HP_Display = ((MyWorld)getWorld()).getScore();
-                    Player_HP_Display.addScore();
+                    Player_HP_Display.Add_Score();
                 }else if (enemy instanceof Satellite){
                     HP_Display Player_HP_Display = ((MyWorld)getWorld()).getScore();
-                    Player_HP_Display.minusScore();
+                    Player_HP_Display.Minus_Score();
                 }
                 getWorld().removeObject(enemy);
                 getWorld().removeObject(this);

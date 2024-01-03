@@ -13,7 +13,7 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    private int speedOfAsteroid = 2;
+    private int Speed_Of_Asteroid = 2;
     private int healthOfShip = 3;
     private int speedOfShip = 2;
     private int speedOfSat = 4;
@@ -43,7 +43,7 @@ public class MyWorld extends World
             enemySpawner("asteroid");
             initTime = currentTime;
         }
-        if(getObjects(EnemyShip.class).size()<enemyCount) {       
+        if(getObjects(Enemy_Ship.class).size()<enemyCount) {       
             enemySpawner("enemyship");
         }
         if (currentTime >= satTime + 5000 + (Greenfoot.getRandomNumber(5)*1000)){
@@ -71,12 +71,12 @@ public class MyWorld extends World
             
             case "asteroid":
                 int Height = Greenfoot.getRandomNumber(getHeight()-25);
-                addObject(new Asteroid(speedOfAsteroid, 1), WIDTH, Height);
+                addObject(new Asteroid(Speed_Of_Asteroid, 1), WIDTH, Height);
                 break;
 
             case "enemyship":
                 int shipHeight = Greenfoot.getRandomNumber(getHeight())-65;
-                int score = getScore().intValue();
+                int score = getScore().Int_Value();
 
                 if(score > 9 && score < 15 && !scoreTen){
                     speedOfShip = speedOfShip + 2;
@@ -87,7 +87,7 @@ public class MyWorld extends World
                     scoreFifteen = true;
                 }
 
-                addObject(new EnemyShip(speedOfShip, healthOfShip), WIDTH, shipHeight);
+                addObject(new Enemy_Ship(speedOfShip, healthOfShip), WIDTH, shipHeight);
                 break;
                 
             case "satellite":
