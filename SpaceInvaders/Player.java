@@ -29,8 +29,9 @@ public class Player extends Global_Object
     public void act()
     {
         if (Player_Health <= 0){
+            HP_Display counter = ((MyWorld)getWorld()).Get_Score();
             //If the players health is 0 or less the Actor is destroyed.
-            Greenfoot.setWorld(new Main_Menu());
+            Greenfoot.setWorld(new Death_Screen(counter));
         }
         
         if (isTouching(Enemy.class)){
