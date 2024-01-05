@@ -19,8 +19,8 @@ public class MyWorld extends World
     private int Speed_Of_Sat = 4;
     private long Initial_Time = System.currentTimeMillis();
     private long Satellite_Time = System.currentTimeMillis();
-    private HP_Display Player_Score = new HP_Display("Score  = ",0);
-    private HP_Display Hp_Display = new HP_Display("3");
+    private Score_Display score_display = new Score_Display("0");
+    private HP_Display hp_display = new HP_Display("3");
     private int Enemy_Count = 3;
     private boolean Score_Over_Ten;
     private boolean Score_Over_Fifteen;
@@ -36,17 +36,17 @@ public class MyWorld extends World
         super(1000, 600, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
         setBackground();
 
-        HP_Display hp_display = new HP_Display("3");
+        //HP_Display hp_display = new HP_Display("3");
         HP_Display_Text = hp_display;
         addObject(hp_display, 10, 50);
         
-        Score_Display score_display = new Score_Display("0");
+        //Score Display
         Score_Display_Text = score_display;
-        //addObject(score_display, 10, 100);
+        addObject(score_display, getWidth()-100, 25);
         
         addObject(new Player(hp_display), 50, 200);
         addObject(new Asteroid(Speed_Of_Asteroid, 1), 500, 300);
-        addObject(Player_Score, getWidth()-100, 25);
+        //addObject(Player_Score, getWidth()-100, 25);
     }
     
     public void act() {
@@ -125,13 +125,13 @@ public class MyWorld extends World
     }
     
 
-    public HP_Display Get_Score()
+    public Score_Display Get_Score()
     {
-        return Player_Score;
+        return score_display;
     }
     
     public HP_Display Get_HP()
     {
-        return Hp_Display;
+        return hp_display;
     }
 }

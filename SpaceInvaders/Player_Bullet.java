@@ -41,11 +41,11 @@ public class Player_Bullet extends Global_Object
             }
             else if (Health < 1){
                 if (Enemy instanceof Enemy_Ship){
-                    HP_Display Player_HP_Display = ((MyWorld)getWorld()).Get_Score();
-                    Player_HP_Display.Add_Score();
+                    Score_Display Score_Display = ((MyWorld)getWorld()).Get_Score();
+                    Score_Display.Increment();
                 }else if (Enemy instanceof Satellite){
-                    HP_Display Player_HP_Display = ((MyWorld)getWorld()).Get_Score();
-                    Player_HP_Display.Minus_Score();
+                    Score_Display Score_Display = ((MyWorld)getWorld()).Get_Score();
+                    Score_Display.Decrement();
                 }
                 getWorld().removeObject(Enemy);
                 getWorld().removeObject(this);
