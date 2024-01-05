@@ -8,14 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Asteroid extends Enemy
 {
-    public int ShipSpeed;
-    public int X_POS;
     /**
      * Act - do whatever the CopyOfEnemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Asteroid(int Speed) {
-        super(Speed);
-    }
     
+    // Constuctor
+    public Asteroid(int Speed, int Health) {
+        super(Speed+Greenfoot.getRandomNumber(5), Health);
+    }
+
+    public int Get_Health(){
+        return super.Get_Health();
+    }
+
+    public void Damage(){
+        super.Damage();
+    }   
 }

@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class Player_Bullet here.
  * 
@@ -8,10 +7,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player_Bullet extends Global_Object
 {
-    /**
-     * Act - do whatever the Player_Bullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     
     public void act()
     {
@@ -22,17 +17,39 @@ public class Player_Bullet extends Global_Object
         } else {
             // Else, move it by 5 pixels.
             this.setLocation(this.getX()+5, this.getY());
-            detectHit();
+            Detect_Hit();
         }
         
     }
     
-    public void detectHit() {
-        Actor enemy = getOneIntersectingObject(Enemy.class);
+    public void Detect_Hit() {
+        // Checks whether the given class is intersecting with this object and stores the results in the variable.
+        Enemy Enemy = (Enemy) getOneIntersectingObject(Enemy.class);
+        Actor powerup = getOneIntersectingObject(Powerup.class);
         
-        if (enemy != null) {
-            getWorld().removeObject(enemy);
-            getWorld().removeObject(this);
+        // If the result of the intersectingObject function is not null run this code.
+        if (powerup != null) {
+            // Runs the activatePowerup function in the MyWorld subclass.
+            ((MyWorld) getWorld()).activatePowerup();
+        }
+        
+        if (Enemy != null) {
+            Enemy.Damage();
+            int Health = Enemy.Get_Health();
+            if (Health >= 1){
+                getWorld().removeObject(this);
+            }
+            else if (Health < 1){
+                if (Enemy instanceof Enemy_Ship){
+                    HP_Display Player_HP_Display = ((MyWorld)getWorld()).Get_Score();
+                    Player_HP_Display.Add_Score();
+                }else if (Enemy instanceof Satellite){
+                    HP_Display Player_HP_Display = ((MyWorld)getWorld()).Get_Score();
+                    Player_HP_Display.Minus_Score();
+                }
+                getWorld().removeObject(Enemy);
+                getWorld().removeObject(this);
+            }
         }
     }
     
