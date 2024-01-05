@@ -24,15 +24,20 @@ public class Player_Bullet extends Global_Object
     }
     
     public void detectHit() {
+        // Checks whether the given class is intersecting with this object and stores the results in the variable.
         Actor enemy = getOneIntersectingObject(Enemy.class);
         Actor powerup = getOneIntersectingObject(Powerup.class);
         
+        // If the result of the intersectingObject function is not null run this code.
         if (powerup != null) {
+            // Runs the activatePowerup function in the MyWorld subclass.
             ((MyWorld) getWorld()).activatePowerup();
         }
         
         if (enemy != null) {
+            // Removes the enemy object when the bullet hits it.
             getWorld().removeObject(enemy);
+            // Removes the bullet object after hitting the enemy.
             getWorld().removeObject(this);
         }
     }

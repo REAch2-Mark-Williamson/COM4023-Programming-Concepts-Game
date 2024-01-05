@@ -14,6 +14,8 @@ public class EnemyShip extends Enemy
      * Act - do whatever the CopyOfEnemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    // Constructor
     public EnemyShip(int Speed) {
         super(Speed);
     }

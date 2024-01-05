@@ -14,12 +14,15 @@ public class Enemy extends Global_Object
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    // Constructor
     public Enemy(int Speed) {
         EnemySpeed = Speed;
     }
     
     public void act()
     {
+        // Gets the X position of the object in the world.
         X_POS = this.getX();
         if(isAtEdge()) {
             // If true, remove the object from the current world.

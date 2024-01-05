@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Score_Display extends Global_Object
 {
-    public String Score_Text = "";
+    private String Score_Text;
     
+    // Constructor to initalise the base score and create the label.
     public Score_Display(String Player_Score_Text) {
         GreenfootImage Player_Score_Label = new GreenfootImage(Player_Score_Text, 30, Color.WHITE, Color.BLACK);
         Player_Score_Label.drawString(Player_Score_Text, 2, 20);
@@ -17,6 +18,7 @@ public class Score_Display extends Global_Object
         setImage(Player_Score_Label);
     }
 
+    // Used to increment the score by 1 by converting the label to an integer and then back to a string.
     public void Increment(){
         Integer Score_Int = Integer.valueOf(Score_Text) + 1;
         String Score_String = Integer.toString(Score_Int);
@@ -26,6 +28,7 @@ public class Score_Display extends Global_Object
         Score_Text = Score_String;
     }
     
+    // Returns the current score of the player.
     public String Get_Text() {
         return Score_Text;
     }

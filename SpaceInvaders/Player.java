@@ -22,6 +22,7 @@ public class Player extends Global_Object
     private int Damage_Cooldown = 0;
     private HP_Display Player_HP_Display;
     
+    // Constructor, sets the player's health.
     public Player(HP_Display hp_display) {
         Player_HP_Display = hp_display;
     }
