@@ -8,10 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player_Bullet extends Global_Object
 {
-    /**
-     * Act - do whatever the Player_Bullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     
     public void act()
     {
@@ -29,6 +25,11 @@ public class Player_Bullet extends Global_Object
     
     public void detectHit() {
         Actor enemy = getOneIntersectingObject(Enemy.class);
+        Actor powerup = getOneIntersectingObject(Powerup.class);
+        
+        if (powerup != null) {
+            ((MyWorld) getWorld()).activatePowerup();
+        }
         
         if (enemy != null) {
             getWorld().removeObject(enemy);

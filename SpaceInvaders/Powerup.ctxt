@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Powerup
+comment0.text=\n\ Write\ a\ description\ of\ class\ EnemyShip\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=Speed
+comment1.target=Powerup(int)
+numComments=2
