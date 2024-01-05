@@ -15,12 +15,14 @@ public class Player extends Global_Object
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    public int Player_Health = 3;
+    
+    
     private int Player_Speed = 5;
     private final int COOLDOWN_PERIOD = 30;
     private int Current_Cooldown = 0;
     private int Damage_Cooldown = 0;
     private HP_Display Player_HP_Display;
+    public int Player_Health = 3;
     
     // Constructor, sets the player's health.
     public Player(HP_Display hp_display) {
@@ -36,11 +38,14 @@ public class Player extends Global_Object
         }
         
         if (isTouching(Enemy.class)){
+            Enemy Enemy = (Enemy) getOneIntersectingObject(Enemy.class);
             //Checks if there is no damage cooldown and removes a point of HP
-            if (Damage_Cooldown <= 0){
-                Player_Health--;
-                String Player_HP_Text = Integer.toString(Player_Health);
-                Player_HP_Display.Set_Text(Player_HP_Text);
+            if (Damage_Cooldown <= 0 && !(Enemy instanceof Powerup)){
+                // Player_Health--;
+                // String Player_HP_Text = Integer.toString(Player_Health);
+                // Player_HP_Display.Set_Text(Player_HP_Text);
+                Player_HP_Display.Decrement();
+                Player_Health = Integer.valueOf(Player_HP_Display.Get_Text());
                 Damage_Cooldown = COOLDOWN_PERIOD;
             }
             

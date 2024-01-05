@@ -44,6 +44,14 @@ public class HP_Display extends Global_Object
         setImage(Player_HP_Label);
         HP_Text = HP_String;
     }
+        public void Decrement(){
+        Integer HP_Int = Integer.valueOf(HP_Text) - 1;
+        String HP_String = Integer.toString(HP_Int);
+        GreenfootImage Player_HP_Label = new GreenfootImage(HP_String, 30, Color.WHITE, Color.BLACK);
+        Player_HP_Label.drawString(HP_String, 20, 20);
+        setImage(Player_HP_Label);
+        HP_Text = HP_String;
+    }
 
 
     //Seans Additions

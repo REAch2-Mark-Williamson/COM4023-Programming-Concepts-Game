@@ -22,9 +22,9 @@ public class Player_Bullet extends Global_Object
         
     }
     
-    public void detectHit() {
+    public void Detect_Hit() {
         // Checks whether the given class is intersecting with this object and stores the results in the variable.
-        Enemy enemy = getOneIntersectingObject(Enemy.class);
+        Enemy Enemy = (Enemy) getOneIntersectingObject(Enemy.class);
         Actor powerup = getOneIntersectingObject(Powerup.class);
         
         // If the result of the intersectingObject function is not null run this code.

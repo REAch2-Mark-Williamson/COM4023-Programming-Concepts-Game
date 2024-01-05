@@ -27,7 +27,7 @@ public class MyWorld extends World
     final private int WIDTH = getWidth()-50;
     private HP_Display HP_Display_Text;
     private Score_Display Score_Display_Text;
-    private final int COOLDOWN_PERIOD = 1000;
+    private final int COOLDOWN_PERIOD = 100;
     private int Current_Cooldown = 0;
     
     public MyWorld()
@@ -42,29 +42,22 @@ public class MyWorld extends World
         
         Score_Display score_display = new Score_Display("0");
         Score_Display_Text = score_display;
-        addObject(score_display, 10, 100);
+        //addObject(score_display, 10, 100);
         
         addObject(new Player(hp_display), 50, 200);
-        addObject(new Asteroid(speedOfAsteroid), 500, 300);
-        //addObject(Player_Score, getWidth()-100, 25);
+        addObject(new Asteroid(Speed_Of_Asteroid, 1), 500, 300);
+        addObject(Player_Score, getWidth()-100, 25);
     }
     
     public void act() {
-        if(getObjects(EnemyShip.class).isEmpty() && getObjects(Asteroid.class).isEmpty()) {
-            Score_Display_Text.Increment();
-            int spawnHeight = Greenfoot.getRandomNumber(getHeight());
-            int shipHeight = Greenfoot.getRandomNumber(getHeight());
-            addObject(new Asteroid(speedOfAsteroid), getWidth()-50, spawnHeight); //added the getHeight and getWidth to make it auto adjust to size
-            addObject(new EnemyShip(speedOfShip), getWidth()-50, shipHeight);
-        }
-        
+        int Score = Get_Score().Int_Value();
         if(Current_Cooldown > 0) {
                 // If the player's cooldown has not expired, decrement it by 1.
                 Current_Cooldown--;
                 // If the player's cooldown has expired, run the bullet spawn method.
-            }  else if (Integer.valueOf(Score_Display_Text.Get_Text()) > 1 && Integer.valueOf(Score_Display_Text.Get_Text()) % 10 == 0){
+            }  else if (Score > 1 && Score % 2 == 0){
                     int powerupHeight = Greenfoot.getRandomNumber(getHeight());
-                    addObject(new Powerup(speedOfAsteroid), getWidth()-50, powerupHeight);
+                    addObject(new Powerup(Speed_Of_Asteroid, 1), getWidth()-50, powerupHeight);
                     // Sets the current cooldown to the specified time after running the method.
                     Current_Cooldown = COOLDOWN_PERIOD;
                 }

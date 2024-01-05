@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Powerup extends Enemy
 {
     // Constructor
-    public Powerup(int Speed) {
-        super(Speed);
+    public Powerup(int Speed, int Health) {
+        super(Speed, Health);
     }
 }
