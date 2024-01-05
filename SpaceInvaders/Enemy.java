@@ -14,6 +14,8 @@ public class Enemy extends Global_Object
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    // Constructor
     public Enemy(int Speed, int Health) {
         Enemy_Speed = Speed;
         Enemy_Health = Health;

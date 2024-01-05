@@ -7,10 +7,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player_Bullet extends Global_Object
 {
-    /**
-     * Act - do whatever the Player_Bullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     
     public void act()
     {
@@ -26,8 +22,17 @@ public class Player_Bullet extends Global_Object
         
     }
     
-    public void Detect_Hit() {
-        Enemy Enemy = (Enemy) getOneIntersectingObject(Enemy.class);
+    public void detectHit() {
+        // Checks whether the given class is intersecting with this object and stores the results in the variable.
+        Enemy enemy = getOneIntersectingObject(Enemy.class);
+        Actor powerup = getOneIntersectingObject(Powerup.class);
+        
+        // If the result of the intersectingObject function is not null run this code.
+        if (powerup != null) {
+            // Runs the activatePowerup function in the MyWorld subclass.
+            ((MyWorld) getWorld()).activatePowerup();
+        }
+        
         if (Enemy != null) {
             Enemy.Damage();
             int Health = Enemy.Get_Health();
