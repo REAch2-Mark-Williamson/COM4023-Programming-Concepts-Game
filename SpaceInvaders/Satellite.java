@@ -16,8 +16,8 @@ public class Satellite extends Enemy
         super(Speed+Greenfoot.getRandomNumber(3), Health);
     }
 
-    public int GetHealth(){
-        return super.GetHealth();
+    public int Get_Health(){
+        return super.Get_Health();
     }
 
     public void Damage(){

@@ -13,47 +13,47 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    private int speedOfAsteroid = 2;
-    private int healthOfShip = 3;
-    private int speedOfShip = 2;
-    private int speedOfSat = 4;
-    private long initTime = System.currentTimeMillis();
-    private long satTime = System.currentTimeMillis();
-    private HP_Display score = new HP_Display("Score  = ",0);
-    private HP_Display hp_display = new HP_Display("3");
-    private int enemyCount = 3;
-    private boolean scoreTen;
-    private boolean scoreFifteen;
+    private int Speed_Of_Asteroid = 2;
+    private int Health_Of_Ship = 3;
+    private int Speed_Of_Ship = 2;
+    private int Speed_Of_Sat = 4;
+    private long Initial_Time = System.currentTimeMillis();
+    private long Satellite_Time = System.currentTimeMillis();
+    private HP_Display Player_Score = new HP_Display("Score  = ",0);
+    private HP_Display Hp_Display = new HP_Display("3");
+    private int Enemy_Count = 3;
+    private boolean Score_Over_Ten;
+    private boolean Score_Over_Fifteen;
     final private int WIDTH = getWidth()-50;
     
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1); //600, 400, 1    - Changed size for now, to make it easier to demo (in my opinion)
-        setBackground();
-        addObject(hp_display, 10, 50);
-        addObject(new Player(hp_display), 50, 200);
+        Set_Background();
+        addObject(Hp_Display, 10, 50);
+        addObject(new Player(Hp_Display), 50, 200);
         addObject(new Asteroid(5,1), getWidth()-50, Greenfoot.getRandomNumber(getHeight()));
-        addObject(score, getWidth()-100, 25);
+        addObject(Player_Score, getWidth()-100, 25);
     }
     
     public void act() {
-        long currentTime = System.currentTimeMillis();
-        if (currentTime >= initTime + 500 + (Greenfoot.getRandomNumber(25)*100)){
-            enemySpawner("asteroid");
-            initTime = currentTime;
+        long Current_Time = System.currentTimeMillis();
+        if (Current_Time >= Initial_Time + 500 + (Greenfoot.getRandomNumber(25)*100)){
+            Enemy_Spawner("asteroid");
+            Initial_Time = Current_Time;
         }
-        if(getObjects(EnemyShip.class).size()<enemyCount) {       
-            enemySpawner("enemyship");
+        if(getObjects(Enemy_Ship.class).size()<Enemy_Count) {       
+            Enemy_Spawner("enemyship");
         }
-        if (currentTime >= satTime + 5000 + (Greenfoot.getRandomNumber(5)*1000)){
-            enemySpawner("satellite");
-            satTime = currentTime;
+        if (Current_Time >= Satellite_Time + 5000 + (Greenfoot.getRandomNumber(5)*1000)){
+            Enemy_Spawner("satellite");
+            Satellite_Time = Current_Time;
             }
         }
     
     
-    public void setBackground() {
+    public void Set_Background() {
         //Gets current background
         GreenfootImage background = getBackground();
         
@@ -64,47 +64,47 @@ public class MyWorld extends World
         background.fillRect(0,0,getWidth(),getHeight());
     }
     
-    public void enemySpawner(String object) {
+    public void Enemy_Spawner(String object) {
 
 
         switch(object){
             
             case "asteroid":
                 int Height = Greenfoot.getRandomNumber(getHeight()-25);
-                addObject(new Asteroid(speedOfAsteroid, 1), WIDTH, Height);
+                addObject(new Asteroid(Speed_Of_Asteroid, 1), WIDTH, Height);
                 break;
 
             case "enemyship":
-                int shipHeight = Greenfoot.getRandomNumber(getHeight())-65;
-                int score = getScore().intValue();
+                int Ship_Height = Greenfoot.getRandomNumber(getHeight())-65;
+                int Score = Get_Score().Int_Value();
 
-                if(score > 9 && score < 15 && !scoreTen){
-                    speedOfShip = speedOfShip + 2;
-                    scoreTen = true;
-                }else if (score > 14 && score < 20 && !scoreFifteen){
-                    speedOfShip = speedOfShip + 2;
-                    healthOfShip = healthOfShip +1;
-                    scoreFifteen = true;
+                if(Score > 9 && Score < 15 && !Score_Over_Ten){
+                    Speed_Of_Ship = Speed_Of_Ship + 2;
+                    Score_Over_Ten = true;
+                }else if (Score > 14 && Score < 20 && !Score_Over_Fifteen){
+                    Speed_Of_Ship = Speed_Of_Ship + 2;
+                    Health_Of_Ship = Health_Of_Ship +1;
+                    Score_Over_Fifteen = true;
                 }
 
-                addObject(new EnemyShip(speedOfShip, healthOfShip), WIDTH, shipHeight);
+                addObject(new Enemy_Ship(Speed_Of_Ship, Health_Of_Ship), WIDTH, Ship_Height);
                 break;
                 
             case "satellite":
-                int satHeight = Greenfoot.getRandomNumber(getHeight())-65;
-                addObject(new Satellite(speedOfSat, 3), WIDTH, satHeight);
+                int Sat_Height = Greenfoot.getRandomNumber(getHeight())-65;
+                addObject(new Satellite(Speed_Of_Sat, 3), WIDTH, Sat_Height);
                 break;            
         }
     }
     
 
-    public HP_Display getScore()
+    public HP_Display Get_Score()
     {
-        return score;
+        return Player_Score;
     }
     
-    public HP_Display getHP()
+    public HP_Display Get_HP()
     {
-        return hp_display;
+        return Hp_Display;
     }
 }
