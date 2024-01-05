@@ -44,6 +44,7 @@ public class HP_Display extends Global_Object
         setImage(Player_HP_Label);
         HP_Text = HP_String;
     }
+    // Increments the player's health by 1.
         public void Decrement(){
         Integer HP_Int = Integer.valueOf(HP_Text) - 1;
         String HP_String = Integer.toString(HP_Int);
@@ -51,37 +52,5 @@ public class HP_Display extends Global_Object
         Player_HP_Label.drawString(HP_String, 20, 20);
         setImage(Player_HP_Label);
         HP_Text = HP_String;
-    }
-
-
-    //Seans Additions
-    public HP_Display(String Output_Beginning, int Player_Score) {
-        this.Player_Score = Player_Score;
-        this.Output_Beginning = Output_Beginning;
-        String Input_Score = Integer.toString(Player_Score);
-        Update_Display(Output_Beginning, Input_Score);
-    }
-
-    public void Update_Display(String Output_Beginning, String Display_Text){ //Output_Beginning = string that goes before the tracked value. "Score = ", "Health :", etc.
-        GreenfootImage Display_Label = new GreenfootImage(Output_Beginning + Display_Text, 30, Color.WHITE, Color.BLACK);
-        Display_Label.drawString(Display_Text, 0, 0);
-        setImage(Display_Label);
-    }
-
-    public void Add_Score() {
-        Player_Score ++ ;
-        String Input_Score = Integer.toString(Player_Score);
-        Update_Display(Output_Beginning, Input_Score);
-    }
-
-        
-    public void Minus_Score() {
-        Player_Score -- ;
-        String Input_Score = Integer.toString(Player_Score);
-        Update_Display(Output_Beginning, Input_Score);
-    }
-
-    public int Int_Value(){
-        return Player_Score;
     }
 }

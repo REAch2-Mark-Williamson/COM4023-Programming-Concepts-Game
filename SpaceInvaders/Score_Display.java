@@ -27,9 +27,21 @@ public class Score_Display extends Global_Object
         setImage(Player_Score_Label);
         Score_Text = Score_String;
     }
+    public void Decrement(){
+        Integer Score_Int = Integer.valueOf(Score_Text) - 1;
+        String Score_String = Integer.toString(Score_Int);
+        GreenfootImage Player_Score_Label = new GreenfootImage(Score_String, 30, Color.WHITE, Color.BLACK);
+        Player_Score_Label.drawString(Score_String, 20, 20);
+        setImage(Player_Score_Label);
+        Score_Text = Score_String;
+    }
     
     // Returns the current score of the player.
     public String Get_Text() {
         return Score_Text;
+    }
+
+    public int Int_Value(){
+        return Integer.valueOf(Score_Text);
     }
 }
